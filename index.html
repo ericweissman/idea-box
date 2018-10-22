@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Idea Box Triples</title>
+  <link rel="stylesheet" type="text/css" href="styles.css" />
+  <link rel="stylesheet" type="text/css" href="normalize.css">
+  <!-- ADD MEDIA QUERIES MOBILE VIEWPORT META THING -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800" rel="stylesheet">
+  <!-- POTENTIALLY ADD FONT AWESOME FOR ICONS?? -->
+</head>
+<body>
+  <header>
+    <article class="logo">
+      <h1><span>ideabox</span>triples</h1>
+    </article>
+    <article class="search-area">
+      <input type="text" class="search-bar" placeholder="Search">
+      <button class="search-btn">MAGNIFIER</button>
+    </article>
+  </header>
+  <section class="main-input">
+    <article>
+      <label for="title-input">Title</label>
+      <input type="text" id="title-input">
+    </article>
+    <article>
+      <label for="body-input">Body</label>
+      <textarea id="body-input"></textarea>
+    </article>
+    <article>
+      <button class="save-btn">Save</button>
+    </article>
+  </section>
+  <section class="idea-card-area">
+    <article>
+      <div class="card-title-body">
+        <h2>Card Title</h2>
+        <p>Idea Body</p>
+      </div>
+      <div class="card-actions">
+        <button class="downvote">DOWNVOTE ICON</button>
+        <button class="upvote">UPVOTE ICON</button>
+        <h3 class="idea-quality">QUALITY: Swill</h3>
+        <button class="delete">DELETE ICON</button>
+      </div>
+    </article>
+  </section>
+  <script src="idea.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
