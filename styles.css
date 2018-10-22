@@ -39,6 +39,7 @@ header span {
   background-color: #ACAAB6;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+  color: white;
 }
 
 /* MAIN INPUT AREA */
@@ -65,7 +66,7 @@ header span {
   background-color: #C2C1C0;
 }
 
-.card-actions {
+.idea-card-area {
   border: 2px solid #D2CCCD;
   border-radius: 5px;
 }
