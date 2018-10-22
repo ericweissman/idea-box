@@ -1,0 +1,80 @@
+* {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+body {
+  display: grid;
+  grid-template-areas: 
+  "header search"
+  "main main"
+  "cards cards"
+}
+/* HEADER SECTION */
+header {
+  grid-area: header;
+  font-weight: 800;
+  background-color: #524649;
+  color: #FFFFF
+}
+
+header span {
+  color: #B2A1B1;
+}
+
+.search-area {
+  grid-area: search;
+}
+.search-bar {
+  color: #ACAAB6;
+  border: 2px solid #ACAAB6;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.search-btn {
+  background-color: #ACAAB6;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+/* MAIN INPUT AREA */
+
+.main-input {
+  background-color: #EAEAEA;
+  grid-area: main;
+}
+
+.idea-card-area {
+  grid-area: cards;
+}
+
+.save-btn {
+  background-color: #6E646B;
+  color: white;
+}
+
+.save-btn:hover {
+  background-color: #524649;
+}
+
+.save-btn:disabled {
+  background-color: #C2C1C0;
+}
+
+.card-actions {
+  border: 2px solid #D2CCCD;
+  border-radius: 5px;
+}
+
+.card-title-body h2 {
+  color: #6E646B;
+}
+
+.card-title-body p, .card-title-body h3 {
+  color: #7C7879
+}
+
