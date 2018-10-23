@@ -22,21 +22,20 @@ function getBody(){
 
 function addCard(title, body){
   var newCard = document.createElement('article');
+  newCard.className = 'card1';
   newCard.innerHTML = `
-      <article class="card1">
       <section class="card-title-body">
         <h2>${currentIdea.title}</h2>
         <p>${currentIdea.body}</p>
       </section>
       <section class="card-actions">
-        <div>
+        <div class="action-btns">
           <button class="downvote"><img src="images/downvote.svg" alt="down button"></button>
           <button class="upvote"><img src="images/upvote.svg" alt="up button"></button>
           <h3 class="idea-quality">QUALITY: Swill</h3>
         </div>
         <img class="delete" src="images/delete.svg" alt="delete button">
       </section>
-    </article>
   `;
   document.querySelector('.idea-card-area').prepend(newCard);
   currentIdea.saveToStorage(title, body);
@@ -63,6 +62,6 @@ function addIdea(){
 
 function removeCard(event){
   if (event.target.classList.contains('delete')){
-    event.target.parentElement.parentElement.parentElement.remove();
+    event.target.parentElement.parentElement.remove();
   }
 }

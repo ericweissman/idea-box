@@ -118,6 +118,7 @@ header span {
   display: flex;
   padding: 5px 0;
   justify-content: space-between;  
+  border-top: 2px solid #D2CCCD;
 }
 
 .idea-card-area {
@@ -132,7 +133,6 @@ header span {
   border: 2px solid #D2CCCD;
   border-radius: 5px;
   width: 600px;
-  padding: 5px;
 }
 
 .card-title-body h2 {
@@ -161,11 +161,13 @@ header span {
 .card-actions div {
   display: flex;
   align-items: center;
+  margin: 0 0 0 5px;
 }
 
 .card-actions img {
   width: 30px;
   background-color: white;
+  height: 30px;
 }
 
 .card-actions button {
@@ -173,3 +175,6 @@ header span {
   padding: 0 7px;
 }
 
+.delete {
+  margin: 0 12px;
+}
