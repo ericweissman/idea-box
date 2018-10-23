@@ -1,6 +1,6 @@
 class Idea {
   constructor(title, body){
-    this.id = 'Idea: ' + Date.now();
+    // this.id = 'Idea: ' + Date.now();
     this.title = title;
     this.body = body;
     this.quality = 'Swill';
@@ -8,16 +8,12 @@ class Idea {
 
 
   saveToStorage(title, body){
-    // var num = new Date();
-    // num += title;
-
-    localStorage.setItem(this.id, body);
-
+    localStorage.setItem(title, body);
   };
 
-  deleteFromStorage(title){
-    localStorage.removeItem(title);
-  };
+  // deleteFromStorage(title){
+  //   localStorage.removeItem(title);
+  // };
 
   updateSelf(){
 

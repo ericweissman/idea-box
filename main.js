@@ -22,7 +22,7 @@ function getBody(){
 
 function addCard(title, body){
   var newCard = document.createElement('article');
-  newCard.className = 'card1';
+  newCard.className = 'idea-card';
   newCard.innerHTML = `
       <section class="card-title-body">
         <h2>${currentIdea.title}</h2>
