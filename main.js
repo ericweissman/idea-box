@@ -5,6 +5,7 @@ var body = '';
 document.querySelector('#title-input').addEventListener("keyup", getTitle);
 document.querySelector('#body-input').addEventListener("keyup", getBody);
 document.querySelector('.save-btn').addEventListener("click", addCard);
+document.querySelector('.idea-card-area').addEventListener("click", removeCard);
 
 function getTitle(){
   title = document.querySelector('#title-input').value;
@@ -21,7 +22,7 @@ function getBody(){
 function addCard(){
   var newCard = document.createElement('article');
   newCard.innerHTML = `
-      <article>
+      <article class="card1">
       <section class="card-title-body">
         <h2>${title}</h2>
         <p>${body}</p>
@@ -33,10 +34,19 @@ function addCard(){
           <h3 class="idea-quality">QUALITY: Swill</h3>
         </div>
         <div>
-          <button class="delete"><img src="images/delete.svg" alt="delete button"></button>
+          <button id="delbut"class="delete"><img src="images/delete.svg" alt="delete button"></button>
         </div>
       </section>
     </article>
   `;
   document.querySelector('.idea-card-area').prepend(newCard);
+  clearInputs();
 }
+
+function clearInputs() {
+  document.querySelector('#title-input').value = null;
+  document.querySelector('#body-input').value = null;
+}
+
+
+
