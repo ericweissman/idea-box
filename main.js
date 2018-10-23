@@ -42,6 +42,7 @@ function addCard(){
     </article>
   `;
   document.querySelector('.idea-card-area').prepend(newCard);
+  idea.saveToStorage(title, body);
   clearInputs();
 }
 

@@ -5,7 +5,11 @@ class Idea {
   }
 
 
-  saveToStorage(){
+  saveToStorage(title, body){
+    var num = new Date();
+    num += title;
+
+    localStorage.setItem(num, body);
 
   };
 
