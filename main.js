@@ -5,7 +5,7 @@ var body = '';
 document.querySelector('#title-input').addEventListener("keyup", getTitle);
 document.querySelector('#body-input').addEventListener("keyup", getBody);
 document.querySelector('.save-btn').addEventListener("click", addCard);
-document.querySelector('.idea-card-area').addEventListener("click", removeCard);
+// document.querySelector('.idea-card-area').addEventListener("click", removeCard);
 
 function getTitle(){
   title = document.querySelector('#title-input').value;
@@ -20,12 +20,14 @@ function getBody(){
 };
 
 function addCard(){
+  var idea = new Idea(title, body);
+  console.log(this.title, this.body);
   var newCard = document.createElement('article');
   newCard.innerHTML = `
       <article class="card1">
       <section class="card-title-body">
-        <h2>${title}</h2>
-        <p>${body}</p>
+        <h2>${idea.title}</h2>
+        <p>${idea.body}</p>
       </section>
       <section class="card-actions">
         <div>
