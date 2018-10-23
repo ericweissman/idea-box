@@ -1,21 +1,23 @@
 class Idea {
-  constructor(){
-
+  constructor(title, body){
+    this.title = title;
+    this.body = body;
   }
+
 
   saveToStorage(){
 
   };
 
   deleteFromStorage(){
-    saveToStorage();
+
   };
 
   updateSelf(){
-    saveToStorage();
+
   }
 
   updateQuality(){
-    saveToStorage();
+
   }
 }
