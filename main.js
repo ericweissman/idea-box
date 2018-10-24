@@ -3,30 +3,48 @@ var body = '';
 var currentIdea = '';
 
 // EVENT LISTENERS
-document.querySelector('#title-input').addEventListener("keyup", getTitle);
-document.querySelector('#body-input').addEventListener("keyup", getBody);
-document.querySelector('.save-btn').addEventListener("click", addIdea);
-document.querySelector('.idea-card-area').addEventListener("click", removeCard);
+select('#title-input').addEventListener("keyup", getIdeaTitle);
+select('#body-input').addEventListener("keyup", getIdeaBody);
+select('.save-btn').addEventListener("click", addNewIdea);
+select('.idea-card-area').addEventListener("click", removeIdeaCard);
 
-function getTitle(){
-  title = document.querySelector('#title-input').value;
-  console.log(title.value);
+// Select function replaces typing documentquerey selector over and over
+function select(field){
+  return document.querySelector(field);
+}
+
+// Input Fields
+function addNewIdea() {
+  var idea = new Idea(title, body);
+  currentIdea = idea;
+  addCardWith(currentIdea.title, currentIdea.body);
+};
+
+function getIdeaTitle(){
+  title = select('#title-input').value;
   return title;
 };
 
-function getBody(){
-  body = document.querySelector('#body-input').value;
-  console.log(body.value);
+function getIdeaBody(){
+  body = select('#body-input').value;
   return body;
 };
 
-function addCard(title, body){
+function removeIdeaCard(event) {
+  if (event.target.classList.contains('delete')) {
+    event.target.parentElement.parentElement.remove();
+  }
+}
+
+// Helper Functions
+
+function addCardWith(title, body){
   var newCard = document.createElement('article');
   newCard.className = 'idea-card';
   newCard.innerHTML = `
       <section class="card-title-body">
-        <h2>${currentIdea.title}</h2>
-        <p>${currentIdea.body}</p>
+        <h2 class="card-title-text">${currentIdea.title}</h2>
+        <p class="card-body-text">${currentIdea.body}</p>
       </section>
       <section class="card-actions">
         <div class="action-btns">
@@ -37,31 +55,16 @@ function addCard(title, body){
         <img class="delete" src="images/delete.svg" alt="delete button">
       </section>
   `;
-  document.querySelector('.idea-card-area').prepend(newCard);
+  select('.idea-card-area').prepend(newCard);
   currentIdea.saveToStorage(title, body);
   clearInputs();
 }
 
-
-
 function clearInputs() {
-  document.querySelector('#title-input').value = null;
-  document.querySelector('#body-input').value = null;
+  select('#title-input').value = null;
+  select('#body-input').value = null;
 }
 
-function eric(title){
-  var temp = localStorage.getItem(title);
-  temp.deleteFromStorage(temp);
-};
 
-function addIdea(){
-  var idea = new Idea(title, body);
-  currentIdea = idea;
-  addCard(currentIdea.title, currentIdea.body);
-};
 
-function removeCard(event){
-  if (event.target.classList.contains('delete')){
-    event.target.parentElement.parentElement.remove();
-  }
-}
+

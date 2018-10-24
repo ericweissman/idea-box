@@ -1,8 +1,10 @@
+/* DEFAULT / MAIN PAGE STYLING */
+
 * {
+  box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
   margin: 0;
-  box-sizing: border-box;
   padding: 0;
 }
 
@@ -17,22 +19,22 @@ body {
 /* HEADER SECTION */
 
 header {
-  grid-area: header;
+  align-items: center;
   background-color: #524649;
   color: white;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
   font-size: 2rem;
+  grid-area: header;
+  justify-content: space-between;
+  padding: 0 20px;
 }
 
-header span {
+.logo span {
   color: #B2A1B1;
   padding: 0 5px;
 }
 
-.logo h1, header span {
+.logo h1, .logo span {
   font-weight: 800;
   margin: 20px 10px;
 }
@@ -54,49 +56,50 @@ header span {
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   color: white;
+  margin: 0 0 0 -10px;
   padding: 5px 10px;
-  margin-left: -10px;
 }
 
 /* MAIN INPUT AREA */
 
 .main-input {
-  background-color: #EAEAEA;
-  grid-area: main;
-  display: flex;
-  flex-direction: column;
   align-items: center;
+  background-color: #EAEAEA;
+  display: flex;
+  grid-area: main;
+  flex-direction: column;
 }
 
-.main-input article {
+.main-input-field {
   display: flex;
   flex-direction: column;
   margin-top: 20px;
 }
 
-.main-input label {
-  margin-bottom: 10px;
+.user-input-label {
   font-size: 1.5rem;
+  margin-bottom: 10px;
 }
 
-.main-input input, .main-input textarea, .save-btn {
-  font-size: 1.5rem;
-  padding: 5px;
-  width: 600px;
+.save-btn, .user-input {
   border: 1px solid #ACAAB6;
   border-radius: 5px;
+  font-size: 1.5rem;
+  height: 40px;
+  padding: 0 0 5px 5px;
+  width: 600px;
 }
 
 .save-btn {
   border: none;
-  margin-bottom: 20px;
   font-weight: 600;
+  margin-bottom: 20px;
 }
 
-.main-input textarea {
+.body-input {
   height: 150px;
-  resize: none;
   font-weight: 500px;
+  resize: none;
 }
 
 .save-btn {
@@ -114,67 +117,64 @@ header span {
 
 /*CARD SECTION*/
 
-.card-actions {
-  display: flex;
-  padding: 5px 0;
-  justify-content: space-between;  
-  border-top: 2px solid #D2CCCD;
-}
-
-.idea-card-area {
-  grid-area: cards;
-  display: flex;
-  flex-direction: column;
+.action-btns {
   align-items: center;
-  margin-top: 20px;
+  display: flex;
+  margin: 0 0 0 5px;
 }
 
-.idea-card-area article {
-  border: 2px solid #D2CCCD;
-  border-radius: 5px;
-  width: 600px;
+.card-actions {
+  border-top: 2px solid #D2CCCD;
+  display: flex;
+  justify-content: space-between;  
+  padding: 5px 0;
 }
 
-.card-title-body h2 {
-  font-weight: 600;
-  color: #6E646B;
-  margin-bottom: 10px; 
+.card-actions img {
+  background-color: white;
+  height: 30px;
+  width: 30px;
+}
+
+.card-body-text {
+  color: #7C7879
 }
 
 .card-title-body {
   padding: 10px;
 }
-.idea-quality {
-  font-weight: bolder;
-}
 
-.card-title-body p {
-  color: #7C7879
-}
-
-.card-actions h3 {
-  padding-left: 5px;
+.card-title-text {
+  color: #6E646B;
   font-weight: 600;
-  color: #7C7879
+  margin-bottom: 10px; 
 }
 
-.card-actions div {
-  display: flex;
-  align-items: center;
-  margin: 0 0 0 5px;
-}
-
-.card-actions img {
-  width: 30px;
-  background-color: white;
-  height: 30px;
-}
-
-.card-actions button {
+.downvote, .idea-quality, .upvote {
   border: none;
   padding: 0 7px;
 }
 
 .delete {
   margin: 0 12px;
+}
+
+.idea-card {
+  border: 2px solid #D2CCCD;
+  border-radius: 5px;
+  width: 600px;
+}
+
+.idea-card-area {
+  align-items: center;
+  display: flex;
+  grid-area: cards;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.idea-quality {
+  color: #7C7879;
+  font-weight: 600;
+  padding-left: 5px;
 }
