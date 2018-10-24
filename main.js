@@ -5,8 +5,10 @@ select('#title-input').addEventListener("keyup", getIdeaTitle);
 select('#body-input').addEventListener("keyup", getIdeaBody);
 select('.save-btn').addEventListener("click", addNewIdea);
 select('.idea-card-area').addEventListener("click", removeIdeaCard);
+select('.idea-card-area').addEventListener("click", clickUpvote);
 
-// Select function replaces typing documentquerey selector over and over
+
+// Select function replaces typing document.query selector over and over
 function select(field){
   return document.querySelector(field);
 }
@@ -27,15 +29,6 @@ function getIdeaBody(){
   return body;
 };
 
-function removeIdeaCard(event) {
-  
-  if (event.target.classList.contains('delete')) {
-    localStorage.removeItem(event.target.parentElement.id);
-    console.log(event.target.parentElement);
-    event.target.parentElement.parentElement.remove();
-  }
-}
-
 // Helper Functions
 
 function addCardWith(idea){
@@ -48,8 +41,8 @@ function addCardWith(idea){
       </section>
       <section class="card-actions" id= ${idea.id}> 
         <div class="action-btns">
-          <button class="downvote"><img src="images/downvote.svg" alt="down button"></button>
-          <button class="upvote"><img src="images/upvote.svg" alt="up button"></button>
+          <button class="downvote"><img class="downvote-img"src="images/downvote.svg" alt="down button"></button>
+          <button class="upvote"><img class="upvote-img"src="images/upvote.svg" alt="up button"></button>
           <h3 class="idea-quality">QUALITY: Swill</h3>
         </div>
         <img class="delete" src="images/delete.svg" alt="delete button">
@@ -65,6 +58,26 @@ function clearInputs() {
   select('#body-input').value = null;
 }
 
+function removeIdeaCard(event) {
+  if (event.target.classList.contains('delete')) {
+    localStorage.removeItem(event.target.parentElement.id);
+    console.log(event.target.parentElement);
+    event.target.parentElement.parentElement.remove();
+  }
+}
 
+function clickUpvote(event) {
+  if(event.target.classList.contains('upvote-img')) {
+    qualityIncrease();
+  }
+}
+
+function qualityIncrease() {
+  if(select('.idea-quality').innerHTML === 'QUALITY: Swill') {
+    select('.idea-quality').innerHTML = 'QUALITY: Plausible';
+  } else if(select('.idea-quality').innerHTML === 'QUALITY: Plausible') {
+    select('.idea-quality').innerHTML = 'QUALITY: Genius';
+  }
+}
 
 
