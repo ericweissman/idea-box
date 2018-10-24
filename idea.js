@@ -1,21 +1,19 @@
 class Idea {
   constructor(title, body){
+    // this.id = 'Idea: ' + Date.now();
     this.title = title;
     this.body = body;
+    this.quality = 'Swill';
   }
 
 
   saveToStorage(title, body){
-    var num = new Date();
-    num += title;
-
-    localStorage.setItem(num, body);
-
+    localStorage.setItem(title, body);
   };
 
-  deleteFromStorage(){
-
-  };
+  // deleteFromStorage(title){
+  //   localStorage.removeItem(title);
+  // };
 
   updateSelf(){
 
