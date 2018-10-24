@@ -6,6 +6,8 @@ select('#body-input').addEventListener("keyup", getIdeaBody);
 select('.save-btn').addEventListener("click", addNewIdea);
 select('.idea-card-area').addEventListener("click", removeIdeaCard);
 select('.idea-card-area').addEventListener("click", clickUpvote);
+select('.idea-card-area').addEventListener("click", clickDownvote);
+
 
 
 // Select function replaces typing document.query selector over and over
@@ -80,4 +82,16 @@ function qualityIncrease() {
   }
 }
 
+function clickDownvote(event) {
+  if(event.target.classList.contains('downvote-img')) {
+    qualityDecrease();
+   }
+}
 
+function qualityDecrease() {
+  if(select('.idea-quality').innerHTML === 'QUALITY: Plausible') {
+    select('.idea-quality').innerHTML = 'QUALITY: Swill';
+  } else if (select('.idea-quality').innerHTML === 'QUALITY: Genius'){
+    select('.idea-quality').innerHTML = 'QUALITY: Plausible';
+  }
+}
