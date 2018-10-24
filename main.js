@@ -1,6 +1,4 @@
-var title = '';
-var body = '';
-var currentIdea = '';
+
 
 // EVENT LISTENERS
 select('#title-input').addEventListener("keyup", getIdeaTitle);
@@ -16,8 +14,7 @@ function select(field){
 // Input Fields
 function addNewIdea() {
   var idea = new Idea(title, body);
-  currentIdea = idea;
-  addCardWith(currentIdea.title, currentIdea.body);
+  addCardWith(idea);
 };
 
 function getIdeaTitle(){
@@ -31,22 +28,25 @@ function getIdeaBody(){
 };
 
 function removeIdeaCard(event) {
+  
   if (event.target.classList.contains('delete')) {
+    localStorage.removeItem(event.target.parentElement.id);
+    console.log(event.target.parentElement);
     event.target.parentElement.parentElement.remove();
   }
 }
 
 // Helper Functions
 
-function addCardWith(title, body){
+function addCardWith(idea){
   var newCard = document.createElement('article');
   newCard.className = 'idea-card';
   newCard.innerHTML = `
       <section class="card-title-body">
-        <h2 class="card-title-text">${currentIdea.title}</h2>
-        <p class="card-body-text">${currentIdea.body}</p>
+        <h2 class="card-title-text">${idea.title}</h2>
+        <p class="card-body-text">${idea.body}</p>
       </section>
-      <section class="card-actions">
+      <section class="card-actions" id= ${idea.id}> 
         <div class="action-btns">
           <button class="downvote"><img src="images/downvote.svg" alt="down button"></button>
           <button class="upvote"><img src="images/upvote.svg" alt="up button"></button>
@@ -56,7 +56,7 @@ function addCardWith(title, body){
       </section>
   `;
   select('.idea-card-area').prepend(newCard);
-  currentIdea.saveToStorage(title, body);
+  idea.saveToStorage();
   clearInputs();
 }
 
