@@ -34,20 +34,7 @@ function getIdeaBody(){
 function addCardWith(idea){
   var newCard = document.createElement('article');
   newCard.className = 'idea-card';
-  newCard.innerHTML = `
-      <section class="card-title-body">
-        <h2 class="card-title-text">${idea.title}</h2>
-        <p class="card-body-text">${idea.body}</p>
-      </section>
-      <section class="card-actions" id= ${idea.id} data-name="${idea.id}"> 
-        <div class="action-btns">
-          <button class="downvote"><img class="downvote-img"src="images/downvote.svg" alt="down button"></button>
-          <button class="upvote"><img class="upvote-img"src="images/upvote.svg" alt="up button"></button>
-          <h3 class="idea-quality">QUALITY: Swill</h3>
-        </div>
-        <img class="delete" src="images/delete.svg" alt="delete button">
-      </section>
-  `;
+  idea.cardInfo(newCard);
   select('.idea-card-area').prepend(newCard);
   idea.saveToStorage();
   clearInputs();
