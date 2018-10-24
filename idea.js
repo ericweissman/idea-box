@@ -12,7 +12,7 @@ class Idea {
   };
 
   deleteFromStorage(){
-    // localStorage.removeItem(this.id);
+//  Figure out next
   };
 
   updateSelf(){
