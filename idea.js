@@ -20,6 +20,6 @@ class Idea {
   }
 
   updateQuality(){
-
+   
   }
 }
