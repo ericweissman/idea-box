@@ -1,9 +1,9 @@
 class Idea {
-  constructor(title, body){
-    this.id = Date.now();
-    this.title = title;
+  constructor(title, body, id, quality){
     this.body = body;
-    this.quality = 'Swill';
+    this.title = title;
+    this.id = id || Date.now();
+    this.quality = quality || 'Swill';
   }
 
   cardInfo(ideaCard) {
@@ -14,8 +14,8 @@ class Idea {
           </section>
           <section class="card-actions" id= ${this.id} data-name="${this.id}"> 
             <div class="action-btns">
-              <button class="downvote"><img class="downvote-img"src="images/downvote.svg" alt="down button"></button>
-              <button class="upvote"><img class="upvote-img"src="images/upvote.svg" alt="up button"></button>
+              <img class="downvote-img"src="images/downvote.svg" alt="down button">
+              <img class="upvote-img"src="images/upvote.svg" alt="up button">
               <h3 class="idea-quality">QUALITY: Swill</h3>
             </div>
             <img class="delete" src="images/delete.svg" alt="delete button">
