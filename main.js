@@ -1,3 +1,6 @@
+// var ideaCardLedger = [{title: 'test', body: 'afsafa', id: 21, quality: 'genius'}];
+var ideaCardLedger = [];
+
 // EVENT LISTENERS
 document.querySelector('.save-btn').addEventListener("click", saveButton);
 document.querySelector('.idea-card-area').addEventListener("click", removeIdeaCard);
@@ -5,42 +8,67 @@ document.querySelector('.idea-card-area').addEventListener("click", clickUpvote)
 document.querySelector('.idea-card-area').addEventListener("click", clickDownvote);
 
 
-window.onload = (pullCardsFromStorage);
+// window.onload = (pullCardsFromStorage);
+window.onload = (pullFromArray);
+// PREVENT DEFAULT? 
+// SHOULDN'T USE LOCAL STORAGE TO RELOAD IDEAS
+// NEXT STEP - ASSIGN ARRAY TO LOCAL Storage
+// PROBLEM - WHILE ON PAGE NEW IDEAS ARE PUSHED AND STORED IN ARRAY, BUT ON 
+// PAGE RELAOD THE ARRAY DISAPPEARS
 
-function pullCardsFromStorage() {
-  var keys = Object.keys(localStorage);
 
-  for(var i = 0; i < keys.length; i++) {
-    var ideaStr = localStorage.getItem(keys[i]);
-    var parsedStr = JSON.parse(ideaStr);
-    addNewIdea(parsedStr)
-  }
+
+// function pullCardsFromStorage() {
+//   var keys = Object.keys(localStorage);
+//   for(var i = 0; i < keys.length; i++) {
+//     var ideaStr = localStorage.getItem(keys[i]);
+//     var parsedStr = JSON.parse(ideaStr);
+//     addNewIdeaCard(parsedStr);
+//   }
+// }
+
+function pullFromArray(){
+  ideaCardLedger.forEach(function(e) {
+    addNewIdeaCard(e);
+  })
+  // for (var i = 0; i < ideaCardLedger.length; i++){
+  //   addNewIdeaCard(ideaCardLedger[i]);
+  // }
 }
 
 function saveButton(event) {
-  addNewIdea();
+  var title = document.querySelector('#title-input').value;
+  var body = document.querySelector('#body-input').value;
+  if (title !== '' && body !== ''){
+      addNewIdeaCard();
+  } 
 }
 
 
-
-// PREVENT DEFAULT? CARD PERSISTENCE ON RELOAD - STORE 10 ON INITIAL LOAD
-// CARDS INFO REPEATED ON MULTIPLE CLICKS OF THE SAVE BUTTON
-
 // Input Fields
-function addNewIdea(ideaObj) {
-
-  if(ideaObj) {
-    var idea = new Idea(ideaObj.title, ideaObj.body, ideaObj.id, ideaObj.quality);
-    addCardWith(idea);
-  } else {
-    var title = document.querySelector('#title-input').value;
-    var body = document.querySelector('#body-input').value;
-    var idea = new Idea(title, body);
-    addCardWith(idea);
-    idea.saveToStorage();
-  }
+function addNewIdeaCard(ideaObj) {
+  ifExistingIdea(ideaObj);
+  ifNewIdea();
 };
 
+function ifNewIdea(){
+  var title = document.querySelector('#title-input').value;
+  var body = document.querySelector('#body-input').value;
+  var idea = new Idea(title, body);
+
+  addCardWith(idea);
+  ideaCardLedger.push(idea);
+  idea.saveToStorage(ideaCardLedger);
+  // console.log(ideaCardLedger);
+}
+
+function ifExistingIdea(obj){
+  if (obj) {
+    var idea = new Idea(obj.title, obj.body, obj.id, obj.quality);
+    ideaCardLedger.push(idea);
+    addCardWith(idea);
+  }
+}
 // Helper Functions
 
 function addCardWith(idea){
@@ -93,3 +121,5 @@ function qualityDecrease() {
     event.target.nextElementSibling.nextElementSibling.innerText = 'QUALITY: Plausible';
   }
 }
+
+
