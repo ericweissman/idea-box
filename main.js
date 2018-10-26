@@ -18,6 +18,15 @@ function pullCardsFromStorage() {
 }
 
 
+      // refactor event listeners to just 2?
+      // cut out and redo addnewideacard - ifexistingidea
+  //complete
+      // addCardWith refactor name? only called once
+      // do we need to assign class to idea-card in AddCardWith?
+  //yes - need dis
+      // move remove to IDEA class
+      // next steps: move methods over to idea class
+
 // IF NEW IDEA REFACTOR
 
 function saveButton(event) {
@@ -62,8 +71,9 @@ function clearInputs() {
 
 function removeIdeaCard(event) {
   if (event.target.classList.contains('delete')) {
-    localStorage.removeItem(event.target.parentElement.id);
-    var someID = document.querySelector('.card-actions').dataset.name;
+    // localStorage.removeItem(event.target.parentElement.id);
+    var idea = new Idea();
+    idea.deleteFromStorage(event);
     event.target.parentElement.parentElement.remove();
   }
 }

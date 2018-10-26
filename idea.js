@@ -28,8 +28,8 @@ class Idea {
     localStorage.setItem(this.id, JSON.stringify(this));
   };
 
-  deleteFromStorage(){
-//  Figure out next
+  deleteFromStorage(event){
+    localStorage.removeItem(event.target.parentElement.id);
   };
 
   updateSelf(){
