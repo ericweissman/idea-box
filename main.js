@@ -4,11 +4,13 @@
 document.querySelector('.save-btn').addEventListener("click", saveButton);
 document.querySelector('.idea-card-area').addEventListener("click", removeIdeaCard);
 document.querySelector('.idea-card-area').addEventListener("click", clickVote);
+document.querySelector('.idea-card-area').addEventListener("click", changeCard);
 // document.querySelector('.idea-card-area').addEventListener("click", engageCardActions);
 
 
 window.onload = (pullCardsFromStorage);
 // PREVENT DEFAULT? 
+//ADD NEW IDEA SHOULD NOT RELOAD THE PAGE?? -- SAVE BTN
 
 function pullCardsFromStorage() {
   var keys = Object.keys(localStorage);
@@ -33,7 +35,6 @@ function saveButton(event) {
 
 // Input Fields
 
-// NOT CURRENTLY PULLING QUALITY FROM STORAGE TO HTML DISPLAY
 function ifExistingIdea(obj){
   if (obj) {
     var idea = new Idea(obj.title, obj.body, obj.id, obj.quality);
@@ -68,6 +69,54 @@ function clearInputs() {
 // }
 
 
+
+function changeCard(event) {
+
+  if(event.target.classList.contains('card-title-text')) {
+    // id for current idea card
+    console.log(event.target.parentElement.nextElementSibling.dataset.name);
+    var idea = editCardContent(event);
+
+    event.target.onblur = editTitle();
+    //idea.updateSelf(this.title);
+    console.log(idea.id);
+
+
+  } 
+
+function editTitle() {
+  alert('see this first');
+
+}
+
+function editCardContent(event) {
+    var getIdeaID = localStorage.getItem(event.target.parentElement.nextElementSibling.dataset.name);
+    var obj = JSON.parse(getIdeaID);
+    var idea = new Idea(obj.title, obj.body, obj.id, obj.quality);
+    return idea;
+}
+
+
+//   var idea = new Idea();
+//   var atitle = "";
+//   var bbody = 'b';
+
+//   if(event.target.classList.contains('idea-card-area')) {
+//     event.target.onblur = yo(event);
+//     alert(atitle);
+//   }
+
+// function yo(event) {
+//     console.log(event.target);
+//     var idea = getIdeaFromEvent(event);
+//     idea.updateSelf('newTitle', 'newBody');
+//     idea.saveToStorage();
+// }
+
+  // assigned to = idea.updateQuality(atitle, abody);
+}
+
+
 function removeIdeaCard(event) {
   if (event.target.classList.contains('delete')) {
     var idea = new Idea();
@@ -87,24 +136,22 @@ function clickVote(event) {
 
 function qualityIncrease(target) {
   var idea = getIdeaFromEvent(event);
+    //REFACTOR target.nextElementSibling.innerText TO SOMTHING SMALLER????
   if(target.nextElementSibling.innerText === "QUALITY: Swill") {
-    target.nextElementSibling.innerText = "QUALITY: Plausible";
-    idea.quality = 'Plausible';
+    target.nextElementSibling.innerText = "QUALITY: " + idea.updateQuality('Plausible');
   } else if(target.nextElementSibling.innerText === "QUALITY: Plausible") {
-    target.nextElementSibling.innerText = "QUALITY: Genius";
-    idea.quality = 'Genius';
+    target.nextElementSibling.innerText = "QUALITY: " + idea.updateQuality('Genius');
   }
   idea.saveToStorage();
 }
 
 function qualityDecrease(target) {
   var idea = getIdeaFromEvent(event);
+  //REFACTOR target.nextElementSibling.nextElementSibling.innerText TO SOMTHING SMALLER????
   if(target.nextElementSibling.nextElementSibling.innerText === 'QUALITY: Plausible') {
-    target.nextElementSibling.nextElementSibling.innerText = 'QUALITY: Swill';
-    idea.quality = 'Swill';
+    target.nextElementSibling.nextElementSibling.innerText = "QUALITY: " + idea.updateQuality('Swill');
   } else if (target.nextElementSibling.nextElementSibling.innerText === 'QUALITY: Genius') {
-    target.nextElementSibling.nextElementSibling.innerText = 'QUALITY: Plausible';
-    idea.quality = 'Plausible';
+    target.nextElementSibling.nextElementSibling.innerText = "QUALITY: " + idea.updateQuality('Plausible');
   }
   idea.saveToStorage();
 }
