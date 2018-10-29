@@ -16,6 +16,19 @@ body {
   "cards"
 }
 
+@media screen and (max-width: 1000px) {
+  header{
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  body section {
+    width: 400px;
+  }
+}
+
 /* HEADER SECTION */
 
 header {
@@ -53,6 +66,7 @@ header {
 
 .search-btn {
   background-color: #ACAAB6;
+  border: 1px solid #ACAAB6;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   color: white;
