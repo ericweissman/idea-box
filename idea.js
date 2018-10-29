@@ -32,10 +32,10 @@ class Idea {
     localStorage.removeItem(event.target.parentElement.id)  
   };
 
-  updateSelf(updatedTitle){
+  updateSelf(updatedTitle, updatedBody){
     this.title = updatedTitle;
-    // this.body = updatedBody;
-    return this.title;
+    this.body = updatedBody;
+    return this.title + this.body;
   }
 
   updateQuality(qual){
