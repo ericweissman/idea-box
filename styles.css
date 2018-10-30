@@ -16,18 +16,7 @@ body {
   "cards"
 }
 
-@media screen and (max-width: 1000px) {
-  header{
-    display: flex;
-    flex-direction: column;
-  }
-}
 
-@media screen and (max-width: 650px) {
-  body section {
-    width: 400px;
-  }
-}
 
 /* HEADER SECTION */
 
@@ -147,11 +136,18 @@ header {
 .card-actions img {
   background-color: white;
   height: 30px;
+  margin: 0 5px 0 7px;
   width: 30px;
 }
 
+.card-actions .delete {
+  margin-right: 20px;
+}
+
 .card-body-text {
-  color: #7C7879
+  color: #7C7879;
+  outline: none;
+  padding: 5px 0;
 }
 
 .card-title-body {
@@ -161,7 +157,9 @@ header {
 .card-title-text {
   color: #6E646B;
   font-weight: 600;
-  margin-bottom: 10px; 
+  margin-bottom: 10px;
+  outline: none;
+  padding: 5px 0;
 }
 
 .downvote, .idea-quality, .upvote {
@@ -192,4 +190,33 @@ header {
   color: #7C7879;
   font-weight: 600;
   padding-left: 5px;
+}
+
+
+/* Media Queries */
+
+
+@media screen and (max-width: 1021px) {
+  header{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .search-bar {
+    margin-bottom: 20px;
+    width: 400px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+
+  .save-btn, .user-input .idea-card {
+    width: 425px;
+  } 
+    .user-input {
+    width: 425px;
+  } 
+    .idea-card {
+    width: 425px;
+  } 
 }
