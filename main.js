@@ -8,6 +8,7 @@ window.onload = (pullCardsFromStorage);
 
 function pullCardsFromStorage() {
   var keys = Object.keys(localStorage);
+  // MAKE A FOR EACH LOOP
   for(var i = 0; i < keys.length; i++) {
     var parsedStorageIdeas = JSON.parse(localStorage.getItem(keys[i]));
     buildIdeaObject(parsedStorageIdeas);
