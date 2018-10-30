@@ -6,7 +6,6 @@ document.querySelector('.idea-card-area').addEventListener("keypress", function(
   var key = event.which || event.keyCode;
     if(key === 13) {
       event.preventDefault();
-      console.log(event);
       changeCard(event);  
     }
   });
@@ -61,8 +60,20 @@ function clearInputs() {
 
 
 function changeCard(event) {
-  if(event.target.classList.contains('card-title-text') || event.target.classList.contains('card-body-text')) {
     var idea = grabCardCont(event);
+
+
+    // IDed EACH CARD BY ID, NEED TO UPDATE BY ID ACCORDINGLY...
+    // PLUS REFACTOR TO MAKE MORE READABLE
+    if(idea.id ===  event.target.closest('.card-title-body').id){
+
+    }
+
+
+
+  
+  if(event.target.classList.contains('card-title-text') || event.target.classList.contains('card-body-text')) {
+    console.log(event.target.closest('.card-title-body').id);
     var newTitle = document.querySelector('.card-title-text').innerText;
     var newBody = document.querySelector('.card-body-text').innerText;
     idea.updateSelf(newTitle, newBody);

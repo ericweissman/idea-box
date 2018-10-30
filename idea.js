@@ -8,7 +8,7 @@ class Idea {
 
   cardInfo(ideaCard) {
     ideaCard.innerHTML = 
-      `<section class="card-title-body">
+      `<section class="card-title-body" id=${this.id} data-name="${this.id}">
             <h2 class="card-title-text" contenteditable="true">${this.title}</h2>
             <p class="card-body-text" contenteditable="true">${this.body}</p>
           </section>
