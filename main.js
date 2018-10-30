@@ -2,13 +2,7 @@
 document.querySelector('.save-btn').addEventListener("click", saveButton);
 document.querySelector('.idea-card-area').addEventListener("click", removeIdeaCard);
 document.querySelector('.idea-card-area').addEventListener("click", clickVote);
-document.querySelector('.idea-card-area').addEventListener("keypress", function(event) {
-  var key = event.which || event.keyCode;
-    if(key === 13) {
-      event.preventDefault();
-      changeCard(event);  
-    }
-  });
+document.querySelector('.idea-card-area').addEventListener("keypress", editExistingCard);
 
 window.onload = (pullCardsFromStorage);
 
@@ -57,46 +51,6 @@ function clearInputs() {
   document.querySelector('#body-input').value = null;
 }
 
-
-
-function changeCard(event) {
-    var idea = grabCardCont(event);
-
-
-    // IDed EACH CARD BY ID, NEED TO UPDATE BY ID ACCORDINGLY...
-    // PLUS REFACTOR TO MAKE MORE READABLE
-    if(idea.id ===  event.target.closest('.card-title-body').id){
-
-    }
-
-
-
-  
-  if(event.target.classList.contains('card-title-text') || event.target.classList.contains('card-body-text')) {
-    console.log(event.target.closest('.card-title-body').id);
-    var newTitle = document.querySelector('.card-title-text').innerText;
-    var newBody = document.querySelector('.card-body-text').innerText;
-    idea.updateSelf(newTitle, newBody);
-    editCardContent(idea);
-    idea.saveToStorage();
-  } 
-}
-
-function editCardContent(idea) {
-    document.querySelector('.card-body-text').innerText = idea.body;
-    document.querySelector('.card-title-text').innerText = idea.title;
-}
-
-function grabCardCont(event) {
-    var getIdeaID = localStorage.getItem(event.target.parentElement.nextElementSibling.dataset.name);
-    var obj = JSON.parse(getIdeaID);
-    var idea = new Idea(obj.title, obj.body, obj.id, obj.quality);
-    return idea;
-}
-
-
-
-
 function removeIdeaCard(event) {
   if (event.target.classList.contains('delete')) {
     var idea = new Idea();
@@ -141,4 +95,28 @@ function getIdeaFromEvent(event) {
     var obj = JSON.parse(getIdeaID);
     var idea = new Idea(obj.title, obj.body, obj.id, obj.quality);
     return idea;
+}
+
+// EDIT CARDS
+function editExistingCard(event) {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    editCardText(event);
+  }
+}
+
+function editCardText(event) {
+  if (event.target.classList.contains('card-title-text') || event.target.classList.contains('card-body-text')) {
+    var idea = getIdFromExistingCard(event);
+
+    idea.updateSelf(document.getElementById(idea.id).children[0].innerText, document.getElementById(idea.id).children[1].innerText);
+    idea.saveToStorage();
+  }
+}
+
+function getIdFromExistingCard(event) {
+  var getIdeaID = localStorage.getItem(event.target.closest('.card-title-body').dataset.name);
+  var obj = JSON.parse(getIdeaID);
+  var idea = new Idea(obj.title, obj.body, obj.id, obj.quality);
+  return idea
 }
