@@ -10,7 +10,7 @@ function pullCardsFromStorage() {
   var keys = Object.keys(localStorage);
   for(var i = 0; i < keys.length; i++) {
     var parsedStorageIdeas = JSON.parse(localStorage.getItem(keys[i]));
-    ifExistingIdea(parsedStorageIdeas);
+    buildIdeaObject(parsedStorageIdeas);
   }
 }
 
@@ -22,21 +22,16 @@ function saveButton(event) {
   var body = document.querySelector('#body-input').value;
   if (title !== '' && body !== ''){
     var idea = new Idea(title, body);
-    ifExistingIdea(idea);
+    buildIdeaObject(idea);
     idea.saveToStorage();
   } 
 }
 
-// Input Fields
-
-function ifExistingIdea(obj){
-  if (obj) {
+// Idea Card Creation
+function buildIdeaObject(obj){
     var idea = new Idea(obj.title, obj.body, obj.id, obj.quality);
     addCardWith(idea);
-  }
 }
-
-// Helper Functions
 
 function addCardWith(idea){
   var newCard = document.createElement('article');
@@ -51,6 +46,8 @@ function clearInputs() {
   document.querySelector('#body-input').value = null;
 }
 
+
+// Manipulating Idea Cards
 function removeIdeaCard(event) {
   if (event.target.classList.contains('delete')) {
     var idea = new Idea();
@@ -58,7 +55,6 @@ function removeIdeaCard(event) {
     event.target.parentElement.parentElement.remove();
   }
 }
-
 
 function clickVote(event) {
   if(event.target.classList.contains('upvote-img')) {
@@ -70,22 +66,22 @@ function clickVote(event) {
 
 function qualityIncrease(target) {
   var idea = getIdeaFromEvent(event);
-    //REFACTOR target.nextElementSibling.innerText TO SOMTHING SMALLER????
-  if(target.nextElementSibling.innerText === "QUALITY: Swill") {
-    target.nextElementSibling.innerText = "QUALITY: " + idea.updateQuality('Plausible');
-  } else if(target.nextElementSibling.innerText === "QUALITY: Plausible") {
-    target.nextElementSibling.innerText = "QUALITY: " + idea.updateQuality('Genius');
+  var currentQuality = target.nextElementSibling;
+  if(currentQuality.innerText === "QUALITY: Swill") {
+    currentQuality.innerText = "QUALITY: " + idea.updateQuality('Plausible');
+  } else if(currentQuality.innerText === "QUALITY: Plausible") {
+    currentQuality.innerText = "QUALITY: " + idea.updateQuality('Genius');
   }
   idea.saveToStorage();
 }
 
 function qualityDecrease(target) {
   var idea = getIdeaFromEvent(event);
-  //REFACTOR target.nextElementSibling.nextElementSibling.innerText TO SOMTHING SMALLER????
-  if(target.nextElementSibling.nextElementSibling.innerText === 'QUALITY: Plausible') {
-    target.nextElementSibling.nextElementSibling.innerText = "QUALITY: " + idea.updateQuality('Swill');
-  } else if (target.nextElementSibling.nextElementSibling.innerText === 'QUALITY: Genius') {
-    target.nextElementSibling.nextElementSibling.innerText = "QUALITY: " + idea.updateQuality('Plausible');
+  var currentQuality = target.nextElementSibling.nextElementSibling;
+  if(currentQuality.innerText === 'QUALITY: Plausible') {
+    currentQuality.innerText = "QUALITY: " + idea.updateQuality('Swill');
+  } else if (currentQuality.innerText === 'QUALITY: Genius') {
+    currentQuality.innerText = "QUALITY: " + idea.updateQuality('Plausible');
   }
   idea.saveToStorage();
 }
@@ -108,8 +104,9 @@ function editExistingCard(event) {
 function editCardText(event) {
   if (event.target.classList.contains('card-title-text') || event.target.classList.contains('card-body-text')) {
     var idea = getIdFromExistingCard(event);
-
-    idea.updateSelf(document.getElementById(idea.id).children[0].innerText, document.getElementById(idea.id).children[1].innerText);
+    var title = document.getElementById(idea.id).children[0];
+    var body = document.getElementById(idea.id).children[1];
+    idea.updateSelf(title.innerText, body.innerText);
     idea.saveToStorage();
   }
 }
