@@ -146,7 +146,6 @@ document.querySelector('.filter-btn-area').addEventListener("click", filterByQua
 
 function filterByQuality(event){
   if (event.target.classList.contains('swill')) {
-    console.log("swill");
     evaluateQualityToDisplay('Swill');
   } else if (event.target.classList.contains('plausible')) {
     evaluateQualityToDisplay("Plausible");
@@ -158,7 +157,6 @@ function filterByQuality(event){
 }
 
 function evaluateQualityToDisplay(quality){
-  // GET ALL THE SHIT
   var keys = Object.keys(localStorage);
   keys.forEach(function(key) {
     var ideaObj = JSON.parse(localStorage.getItem(key));
