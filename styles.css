@@ -14,6 +14,7 @@ body {
   "header"
   "main"
   "filter"
+  "show-more-less"
   "cards"
 }
 
@@ -126,7 +127,7 @@ header {
   justify-content: center;
 }
 
-.filter-btn {
+.btn {
   background-color: #6E646B;
   color: white;
   border: 1px solid #ACAAB6;
@@ -138,12 +139,19 @@ header {
   width: 130px;
 }
 
-.filter-btn:hover {
+.btn:hover {
   background-color: #524649;
 }
 
-.filter-btn:disabled {
+.btn:disabled {
   background-color: #C2C1C0;
+}
+
+/* SHOW MORE LESS AREA */
+.show-more-less {
+  grid-area: show-more-less;
+  display: flex;
+  justify-content: center;
 }
 
 /*CARD SECTION*/

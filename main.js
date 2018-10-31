@@ -4,20 +4,27 @@ document.querySelector('.idea-card-area').addEventListener("click", removeIdeaCa
 document.querySelector('.idea-card-area').addEventListener("click", clickVote);
 document.querySelector('.idea-card-area').addEventListener("keypress", editExistingCard);
 document.querySelector('.search-bar').addEventListener("keyup", filterBySearchInput)
+document.querySelector('.filter-btn-area').addEventListener("click", filterByQuality);
+document.querySelector('.show-btn').addEventListener("click", showMoreShowLessToggle);
+
 
 window.onload = (pullCardsFromStorage);
 
 function pullCardsFromStorage() {
   var keys = Object.keys(localStorage);
-  keys.forEach(function(key){
-    var parsedStorageIdeas = JSON.parse(localStorage.getItem(key));
+  var numKeys = keys.length;
+  var index = numKeys > 10 ? numKeys - 10 : 0;
+  for(index; index < keys.length; index++){
+    var parsedStorageIdeas = JSON.parse(localStorage.getItem(keys[index]));
     buildIdeaObject(parsedStorageIdeas);
-  })
+  }
 }
 
 function saveButton(event) {
   var title = document.querySelector('#title-input').value;
   var body = document.querySelector('#body-input').value;
+  
+  
   if (title !== '' && body !== ''){
     var idea = new Idea(title, body);
     buildIdeaObject(idea);
@@ -140,9 +147,7 @@ function filterBySearchInput() {
   })
 }
 
-
 // FILTER BY IDEA QUALITY
-document.querySelector('.filter-btn-area').addEventListener("click", filterByQuality);
 
 function filterByQuality(event){
   if (event.target.classList.contains('swill')) {
@@ -169,3 +174,40 @@ function evaluateQualityToDisplay(quality){
     } 
   })
 }
+
+function showMoreShowLessToggle() {
+  var showBtn = document.querySelector(".show-btn");
+  
+  if (showBtn.innerText === "Show More") {
+  showBtn.innerText = "Show Less";
+  addAllCardsFromStorage();
+  } else if (showBtn.innerText === "Show Less") {
+  showBtn.innerText = "Show More";
+  window.location.reload(true);
+  }
+}
+
+
+
+function addAllCardsFromStorage() {
+  // remove all from page
+  var targets = document.querySelector(".idea-card-area");
+  while (targets.firstChild) {
+    targets.removeChild(targets.firstChild);
+  }
+  // Adding all cards  
+  var keys = Object.keys(localStorage);
+  keys.forEach(function (key) {
+    var parsedStorageIdeas = JSON.parse(localStorage.getItem(key));
+    buildIdeaObject(parsedStorageIdeas);
+  })
+}
+
+// function toReplaceOurForEachLoops(){
+//   var keys = Object.keys(localStorage);
+//   keys.forEach(function (key) {
+//     var ideaObj = JSON.parse(localStorage.getItem(key));
+//     var idea = new Idea(ideaObj.title, ideaObj.body, ideaObj.id, ideaObj.quality);
+//     return idea;
+//   })
+// }
