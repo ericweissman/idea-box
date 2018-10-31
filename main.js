@@ -3,20 +3,17 @@ document.querySelector('.save-btn').addEventListener("click", saveButton);
 document.querySelector('.idea-card-area').addEventListener("click", removeIdeaCard);
 document.querySelector('.idea-card-area').addEventListener("click", clickVote);
 document.querySelector('.idea-card-area').addEventListener("keypress", editExistingCard);
+document.querySelector('.search-bar').addEventListener("keyup", filterBySearchInput)
 
 window.onload = (pullCardsFromStorage);
 
 function pullCardsFromStorage() {
   var keys = Object.keys(localStorage);
-  // MAKE A FOR EACH LOOP
-  for(var i = 0; i < keys.length; i++) {
-    var parsedStorageIdeas = JSON.parse(localStorage.getItem(keys[i]));
+  keys.forEach(function(key){
+    var parsedStorageIdeas = JSON.parse(localStorage.getItem(key));
     buildIdeaObject(parsedStorageIdeas);
-  }
+  })
 }
-
-
-// IF NEW IDEA REFACTOR
 
 function saveButton(event) {
   var title = document.querySelector('#title-input').value;
@@ -30,8 +27,8 @@ function saveButton(event) {
 
 // Idea Card Creation
 function buildIdeaObject(obj){
-    var idea = new Idea(obj.title, obj.body, obj.id, obj.quality);
-    addCardWith(idea);
+  var idea = new Idea(obj.title, obj.body, obj.id, obj.quality);
+  addCardWith(idea);
 }
 
 function addCardWith(idea){
@@ -117,4 +114,28 @@ function getIdFromExistingCard(event) {
   var obj = JSON.parse(getIdeaID);
   var idea = new Idea(obj.title, obj.body, obj.id, obj.quality);
   return idea
+}
+
+// SEARCH FUNCTIONALITY
+function compare(userTextFromInput, ideaFromPage) {
+  var findTitle = ideaFromPage.title.toLowerCase();
+  var findBody = ideaFromPage.body.toLowerCase();
+  var specificIdeaCard = document.getElementById(ideaFromPage.id).parentElement.classList;
+  if (!findTitle.includes(userTextFromInput) || !findBody.includes(userTextFromInput)) {
+    specificIdeaCard.add("hidden");
+  }
+  if (findTitle.includes(userTextFromInput) || findBody.includes(userTextFromInput)) {
+    specificIdeaCard.remove("hidden");
+  }
+}
+
+function filterBySearchInput() {
+  var userSearchText = document.querySelector('.search-bar').value.toLowerCase();
+  var keys = Object.keys(localStorage);
+
+  keys.forEach(function (key) {
+    var ideaObj = JSON.parse(localStorage.getItem(key));
+    var idea = new Idea(ideaObj.title, ideaObj.body, ideaObj.id, ideaObj.quality);
+    compare(userSearchText, idea);
+  })
 }

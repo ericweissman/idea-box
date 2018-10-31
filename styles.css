@@ -221,6 +221,12 @@ header {
 }
 
 
+/* HIDING CLASS  */
+
+.hidden {
+  display: none;
+}
+
 /* Media Queries */
 
 
