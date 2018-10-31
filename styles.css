@@ -27,7 +27,7 @@ header {
   background-color: #524649;
   color: white;
   display: flex;
-  font-size: 2rem;
+  font-size: 32px;
   grid-area: header;
   justify-content: space-between;
   padding: 0 20px;
@@ -89,7 +89,7 @@ header {
 .save-btn, .user-input {
   border: 1px solid #ACAAB6;
   border-radius: 5px;
-  font-size: 1.5rem;
+  font-size: 24px;
   height: 40px;
   padding: 0 0 5px 5px;
   width: 600px;
@@ -237,7 +237,6 @@ header {
 
 /* Media Queries */
 
-
 @media screen and (max-width: 1021px) {
   header{
     display: flex;
@@ -252,13 +251,21 @@ header {
 
 @media screen and (max-width: 640px) {
 
-  .save-btn, .user-input .idea-card {
+  .save-btn {
     width: 500px;
   } 
-    .user-input {
+
+  .user-input {
     width: 500px;
   } 
-    .idea-card {
+  
+  .idea-card {
     width: 500px;
-  } 
+  }
+
+  .btn {
+    font-size: 16px;
+    width: 110px;
+  }
+
 }
