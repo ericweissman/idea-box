@@ -13,6 +13,7 @@ body {
   grid-template-areas: 
   "header"
   "main"
+  "filter"
   "cards"
 }
 
@@ -118,6 +119,33 @@ header {
   background-color: #C2C1C0;
 }
 
+/* FILTER SECTION */
+.filter-btn-area {
+  display: flex;
+  grid-area: filter;
+  justify-content: center;
+}
+
+.filter-btn {
+  background-color: #6E646B;
+  color: white;
+  border: 1px solid #ACAAB6;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: 600;
+  height: 40px;
+  margin: 20px 10px 0 10px;
+  width: 130px;
+}
+
+.filter-btn:hover {
+  background-color: #524649;
+}
+
+.filter-btn:disabled {
+  background-color: #C2C1C0;
+}
+
 /*CARD SECTION*/
 
 .action-btns {
@@ -211,12 +239,12 @@ header {
 @media screen and (max-width: 640px) {
 
   .save-btn, .user-input .idea-card {
-    width: 425px;
+    width: 500px;
   } 
     .user-input {
-    width: 425px;
+    width: 500px;
   } 
     .idea-card {
-    width: 425px;
+    width: 500px;
   } 
 }
