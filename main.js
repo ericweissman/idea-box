@@ -139,3 +139,33 @@ function filterBySearchInput() {
     compare(userSearchText, idea);
   })
 }
+
+
+// FILTER BY IDEA QUALITY
+document.querySelector('.filter-btn-area').addEventListener("click", filterByQuality);
+
+function filterByQuality(event){
+  if (event.target.classList.contains('swill')) {
+    evaluateQualityToDisplay('Swill');
+  } else if (event.target.classList.contains('plausible')) {
+    evaluateQualityToDisplay("Plausible");
+  } else if (event.target.classList.contains('genius')) {
+    evaluateQualityToDisplay("Genius");
+  } else if (event.target.classList.contains('reset')) { 
+    window.location.reload(true);
+  }
+}
+
+function evaluateQualityToDisplay(quality){
+  var keys = Object.keys(localStorage);
+  keys.forEach(function(key) {
+    var ideaObj = JSON.parse(localStorage.getItem(key));
+    var idea = new Idea(ideaObj.title, ideaObj.body, ideaObj.id, ideaObj.quality);
+    var specificIdeaCard = document.getElementById(idea.id).parentElement.classList;
+
+    specificIdeaCard.add("hidden");
+    if (idea.quality === quality) {
+      specificIdeaCard.remove("hidden");
+    } 
+  })
+}
