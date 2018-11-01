@@ -187,8 +187,6 @@ function showMoreShowLessToggle() {
   }
 }
 
-
-
 function addAllCardsFromStorage() {
   // remove all from page
   var targets = document.querySelector(".idea-card-area");
@@ -202,12 +200,3 @@ function addAllCardsFromStorage() {
     buildIdeaObject(parsedStorageIdeas);
   })
 }
-
-// function toReplaceOurForEachLoops(){
-//   var keys = Object.keys(localStorage);
-//   keys.forEach(function (key) {
-//     var ideaObj = JSON.parse(localStorage.getItem(key));
-//     var idea = new Idea(ideaObj.title, ideaObj.body, ideaObj.id, ideaObj.quality);
-//     return idea;
-//   })
-// }
