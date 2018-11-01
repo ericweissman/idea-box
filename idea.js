@@ -14,8 +14,8 @@ class Idea {
           </section>
           <section class="card-actions" id= ${this.id} data-name="${this.id}"> 
             <div class="action-btns">
-              <img class="downvote-img"src="images/downvote.svg" alt="down button">
-              <img class="upvote-img"src="images/upvote.svg" alt="up button">
+              <img class="downvote-img"src="images/downvote.svg" alt="downvote button">
+              <img class="upvote-img"src="images/upvote.svg" alt="upvote button">
               <h3 class="idea-quality">QUALITY: ${this.quality}</h3>
             </div>
             <img class="delete" src="images/delete.svg" alt="delete button">
@@ -24,21 +24,21 @@ class Idea {
   }
 
 
-  saveToStorage(){
+  saveToStorage() {
     localStorage.setItem(this.id, JSON.stringify(this));
   };
 
-  deleteFromStorage(event){
+  deleteFromStorage(event) {
     localStorage.removeItem(event.target.parentElement.id)  
   };
 
-  updateSelf(updatedTitle, updatedBody){
+  updateSelf(updatedTitle, updatedBody) {
     this.title = updatedTitle;
     this.body = updatedBody;
     return this.title + this.body;
   }
 
-  updateQuality(qual){
+  updateQuality(qual) {
     this.quality = qual;
     return this.quality;
   }

@@ -18,8 +18,6 @@ body {
   "cards"
 }
 
-
-
 /* HEADER SECTION */
 
 header {
@@ -38,7 +36,8 @@ header {
   padding: 0 5px;
 }
 
-.logo h1, .logo span {
+.logo h1, 
+.logo span {
   font-weight: 800;
   margin: 20px 10px;
 }
@@ -86,7 +85,8 @@ header {
   margin-bottom: 10px;
 }
 
-.save-btn, .user-input {
+.save-btn, 
+.user-input {
   border: 1px solid #ACAAB6;
   border-radius: 5px;
   font-size: 24px;
@@ -96,7 +96,7 @@ header {
 }
 
 .save-btn {
-  border: none;
+  border: 0;
   font-weight: 600;
   margin-bottom: 20px;
 }
@@ -116,11 +116,8 @@ header {
   background-color: #524649;
 }
 
-.save-btn:disabled {
-  background-color: #C2C1C0;
-}
-
 /* FILTER SECTION */
+
 .filter-btn-area {
   display: flex;
   grid-area: filter;
@@ -155,7 +152,6 @@ header {
 }
 
 /*CARD SECTION*/
-
 .action-btns {
   align-items: center;
   display: flex;
@@ -182,7 +178,7 @@ header {
 
 .card-body-text {
   color: #7C7879;
-  outline: none;
+  outline: 0;
   padding: 5px 0;
 }
 
@@ -194,12 +190,14 @@ header {
   color: #6E646B;
   font-weight: 600;
   margin-bottom: 10px;
-  outline: none;
+  outline: 0;
   padding: 5px 0;
 }
 
-.downvote, .idea-quality, .upvote {
-  border: none;
+.downvote, 
+.idea-quality, 
+.upvote {
+  border: 0;
   padding: 0 7px;
 }
 
@@ -228,7 +226,6 @@ header {
   padding-left: 5px;
 }
 
-
 /* HIDING CLASS  */
 
 .hidden {
@@ -250,7 +247,6 @@ header {
 }
 
 @media screen and (max-width: 640px) {
-
   .save-btn {
     width: 500px;
   } 
@@ -258,7 +254,7 @@ header {
   .user-input {
     width: 500px;
   } 
-  
+
   .idea-card {
     width: 500px;
   }
@@ -267,5 +263,4 @@ header {
     font-size: 16px;
     width: 110px;
   }
-
 }
