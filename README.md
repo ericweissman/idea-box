@@ -8,9 +8,9 @@ The Ideabox app allows a user to keep track of their ideas in several ways, diff
 ## Usage example
 
 A few motivating and useful examples of how your product can be used. Spice this up with code blocks and potentially more screenshots.
-<img width="620" alt="screen shot 2018-11-01 at 8 03 38 am" src="https://user-images.githubusercontent.com/39391585/47856398-beccb400-ddac-11e8-8890-14c31348551e.png">
+<img width="320" alt="screen shot 2018-11-01 at 8 03 38 am" src="https://user-images.githubusercontent.com/39391585/47856398-beccb400-ddac-11e8-8890-14c31348551e.png">
 
-<img width="621" alt="screen shot 2018-11-01 at 8 03 17 am" src="https://user-images.githubusercontent.com/39391585/47856399-beccb400-ddac-11e8-89b8-fbd76081514e.png">
+<img width="321" alt="screen shot 2018-11-01 at 8 03 17 am" src="https://user-images.githubusercontent.com/39391585/47856399-beccb400-ddac-11e8-89b8-fbd76081514e.png">
 
 
 ## Built With
