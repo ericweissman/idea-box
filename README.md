@@ -7,13 +7,12 @@ The Ideabox app allows a user to keep track of their ideas in several ways, diff
 
 ## Usage example
 
-In this first example the user has added several ideas to their list and changed their quality:
+#### In this first example the user has added several ideas to their list and changed their quality:
 
    <img width="321" alt="screen shot 2018-11-01 at 8 03 17 am" src="https://user-images.githubusercontent.com/39391585/47856399-beccb400-ddac-11e8-89b8-fbd76081514e.png">
 
-### 
 
-In this second example the user has filtered down to just the plausible ideas from their list:
+#### In this second example the user has filtered down to just the plausible ideas from their list:
 
    <img width="320" alt="screen shot 2018-11-01 at 8 03 38 am" src="https://user-images.githubusercontent.com/39391585/47856398-beccb400-ddac-11e8-8890-14c31348551e.png">
 
